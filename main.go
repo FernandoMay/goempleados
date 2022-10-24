@@ -3,7 +3,7 @@ package main
 import (
 	"github.com/FernandoMay/goempleados/controllers"
 	"github.com/FernandoMay/goempleados/models"
-	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 
 	"github.com/gin-gonic/gin"
 )
@@ -17,11 +17,11 @@ func main() {
 	models.ConnectDatabase()
 
 	// Routes
-	r.GET("/empleados", controllers.FindEmpleados)
-	r.GET("/empleados/:id", controllers.FindEmpleado)
-	r.POST("/empleados", controllers.CreateEmpleado)
-	r.PATCH("/empleados/:id", controllers.UpdateEmpleado)
-	r.DELETE("/empleados/:id", controllers.DeleteEmpleado)
+	r.GET("/api/empleados", controllers.FindEmpleados)
+	r.GET("/api/empleados/:id", controllers.FindEmpleado)
+	r.POST("/api/empleados", controllers.CreateEmpleado)
+	r.PATCH("/api/empleados/:id", controllers.UpdateEmpleado)
+	r.DELETE("/api/empleados/:id", controllers.DeleteEmpleado)
 
 	// Run the server
 	r.Run()

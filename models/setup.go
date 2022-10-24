@@ -1,22 +1,25 @@
 package models
 
 import (
-	"github.com/jinzhu/gorm"
+	"gorm.io/driver/mysql"
+	"gorm.io/gorm"
 )
 
 var DB *gorm.DB
+var err error
+
+const DNS = "root:donnuts64@tcp(127.0.0.1:3306)/empleados?charset=utf8&parseTime=True&loc=Local"
 
 func ConnectDatabase() {
 
-	database, err := gorm.Open("mysql", "root:donnuts54@tcp(127.0.0.1:3306)/empleados?charset=utf8&parseTime=True")
+	DB, err = gorm.Open(mysql.Open(DNS), &gorm.Config{})
+	// database, err := gorm.Open("mysql", "sammy:password@tcp(127.0.0.1:3306)/empleados.db?charset=utf8&parseTime=True")
 
-	// database, err := gorm.Open(mysql.Open(sqlinfo), &gorm.Config{})
+	// database, err := gorm.Open("sqlite3", "test.db")
 
 	if err != nil {
 		panic("Failed to connect to database!")
 	}
 
-	database.AutoMigrate(&Empleado{})
-
-	DB = database
+	DB.AutoMigrate(&Empleado{})
 }
