@@ -4,7 +4,7 @@
 
 Be sure you have initialized the mysql service and have created the "empleados" database.
 
-Change the dsn settings for mysql user connection.
+Change the dsn settings for mysql user connection in models/setup.go.
 
 To run empleados go app:
 
