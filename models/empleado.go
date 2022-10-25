@@ -9,5 +9,5 @@ type Empleado struct {
 	ApellidoM string    `json:"apellidom"`
 	Area      string    `json:"area"`
 	FechaNac  time.Time `json:"fechanac"`
-	Sueldo    float32   `json:"sueldo"`
+	Sueldo    uint      `json:"sueldo"`
 }

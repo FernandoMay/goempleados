@@ -2,19 +2,29 @@ package controllers
 
 import (
 	"net/http"
+	"time"
 
 	"github.com/FernandoMay/goempleados/models"
 	"github.com/gin-gonic/gin"
 )
 
 type CreateEmpleadoInput struct {
-	Nombre string `json:"nombre" binding:"required"`
-	Area   string `json:"area" binding:"required"`
+	Nombre    string    `json:"nombre" binding:"required"`
+	ApellidoP string    `json:"apellidop" binding:"required"`
+	ApellidoM string    `json:"apellidom" binding:"required"`
+	Area      string    `json:"area" binding:"required"`
+	FechaNac  time.Time `json:"fechanac" binding:"required"`
+	Sueldo    uint      `json:"sueldo" binding:"required"`
 }
 
 type UpdateEmpleadoInput struct {
-	Nombre string `json:"nombre"`
-	Area   string `json:"area"`
+	ID        uint      `json:"id"`
+	Nombre    string    `json:"nombre"`
+	ApellidoP string    `json:"apellidop"`
+	ApellidoM string    `json:"apellidom"`
+	Area      string    `json:"area"`
+	FechaNac  time.Time `json:"fechanac"`
+	Sueldo    uint      `json:"sueldo"`
 }
 
 // GET /Empleados
@@ -50,7 +60,7 @@ func CreateEmpleado(c *gin.Context) {
 	}
 
 	// Create Empleado
-	Empleado := models.Empleado{Nombre: input.Nombre, Area: input.Area}
+	Empleado := models.Empleado{Nombre: input.Nombre, ApellidoP: input.ApellidoP, ApellidoM: input.ApellidoM, Area: input.Area, FechaNac: input.FechaNac, Sueldo: uint(input.Sueldo)}
 	models.DB.Create(&Empleado)
 
 	c.JSON(http.StatusOK, gin.H{"data": Empleado})
