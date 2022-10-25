@@ -11,3 +11,6 @@ To run empleados go app:
 ```
 $ go run main.go
 ```
+
+![Gin](gogin.png)
+![App](goemp.png)
