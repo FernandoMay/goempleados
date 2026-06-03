@@ -1,16 +1,23 @@
-# Empleados REST API using Gin and Gorm
+# Empleados REST API
 
-<!-- Read the [article](https://blog.logrocket.com/how-to-build-a-rest-api-with-golang-using-gin-and-gorm/). -->
+Gin + GORM REST API for employee management with SQLite.
 
-Be sure you have initialized the mysql service and have created the "empleados" database.
+## Endpoints
 
-Change the dsn settings for mysql user connection in models/setup.go.
+- `GET /empleados` — List all employees
+- `GET /empleados/:id` — Get an employee
+- `POST /empleados` — Create an employee
+- `PATCH /empleados/:id` — Update an employee
+- `DELETE /empleados/:id` — Delete an employee
 
-To run empleados go app:
+## Run
 
+```bash
+go run main.go
 ```
-$ go run main.go
-```
 
-![Gin](gogin.png)
-![App](goemp.png)
+## Test
+
+```bash
+go test ./...
+```
